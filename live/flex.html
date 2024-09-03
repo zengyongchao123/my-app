@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap; /* 允许子元素换行 */
+        gap: 20px; /* 设置子元素之间的间距 */
+        justify-content: flex-start; /* 默认从左开始对齐 */
+      }
+
+      .item {
+        width: 150px; /* 固定宽度 */
+        height: 100px; /* 固定高度 */
+        background-color: lightblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        box-sizing: border-box;
+        margin-bottom: 20px; /* 保持行间距 */
+      }
+
+      .container > .item:nth-child(2n + 1):only-child {
+        margin-left: auto;
+        margin-right: auto; /* 让最后一个单个 box 居中 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <!-- 如果 box 数量为单数，这个 box 将会居中 -->
+    </div>
+  </body>
+</html>

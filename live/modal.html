@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Animation</title>
+    <style>
+      /* 背景遮罩 */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      /* Modal 初始状态 */
+      .modal {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 150px;
+        height: 100px;
+        background: white;
+        border-radius: 8px;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: all 0.5s ease-in-out;
+      }
+
+      /* Modal 全屏状态 */
+      .modal.open {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      .modal-backdrop.open {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="openModalBtn">Open Modal</button>
+
+    <div id="modalBackdrop" class="modal-backdrop"></div>
+
+    <div id="modal" class="modal">
+      <p>Modal Content</p>
+    </div>
+
+    <script>
+      const modal = document.getElementById("modal");
+      const modalBackdrop = document.getElementById("modalBackdrop");
+      const openModalBtn = document.getElementById("openModalBtn");
+
+      openModalBtn.addEventListener("click", () => {
+        modal.classList.toggle("open");
+        modalBackdrop.classList.toggle("open");
+      });
+
+      modalBackdrop.addEventListener("click", () => {
+        modal.classList.remove("open");
+        modalBackdrop.classList.remove("open");
+      });
+    </script>
+  </body>
+</html>
